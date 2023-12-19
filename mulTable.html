@@ -6,33 +6,21 @@
   <title>乘法口诀表</title>
 </head>
 <body>
-  <div id="app" style="color: #666; padding-left: 16px;">
+  <div style="color: #666; padding-left: 16px;">
     <h4>乘法口诀表：</h4>
-    <pre>{{ strC }}</pre>
+    <pre id="strC"></pre>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
-    var vm = new Vue({
-      el:'#app',
-      data: {
-        strC: ''
-      },
-      mounted() {
-        this.sArr()
-      },
-      methods: {
-        sArr() {
-          for (let i = 1; i <= 9; i++) {
-            for (let y = 1; y <= i; y++) {
-              this.strC += (`${y}*${i}=${i*y}` + ((i == y) ? '' : '\t'))
-            }
-            this.strC += '\n'
-            // console.log(this.strC)
-          }
-          console.log(this.strC)
-        }
+    let strC = ''
+    for (let i = 1; i <= 9; i++) {
+      for (let y = 1; y <= i; y++) {
+        strC += (`${y}*${i}=${i*y}` + ((i == y) ? '' : '\t'))
       }
-    })
+      strC += '\n'
+      // console.log(strC)
+    }
+    document.getElementById('strC').innerText = strC
+    console.log(strC)
   </script>
 </body>
 </html>
