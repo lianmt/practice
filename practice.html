@@ -3,19 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Hello world</title>
 </head>
 <body>
-  <div id="app" style="color: #666">
-    <div>
-      <h4>乘法口诀表：</h4>
-      <pre>{{ strC }}</pre>
-    </div>
-
-    <div>
-      <h4>{{ message }}</h4>
-      <todo-list :list="arrList" />
-    </div>
+  <div id="app">
+    <h4>{{ message }}</h4>
+    <todo-list :list="arrList" />
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
@@ -83,24 +76,7 @@
             title: '三',
             del: false
           }
-        ],
-        cfb: [],
-        strC: ''
-      },
-      mounted() {
-        this.sArr()
-      },
-      methods: {
-        sArr() {
-          for (let i = 1; i <= 9; i++) {
-            for (let y = 1; y <= i; y++) {
-              this.strC += (`${y}*${i}=${i*y}` + ((i == y) ? '' : '\t'))
-            }
-            this.strC += '\n'
-            // console.log(this.strC)
-          }
-          console.log(this.strC)
-        }
+        ]
       }
     })
   </script>
