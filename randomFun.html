@@ -13,16 +13,38 @@
 
   <script>
     let shuzi, arr = []
+    /*
+     Math.random() - 0.5 随机得到一个正数、负数或是 0，
+     如果是正数则降序排列，如果是负数则升序排列，如果是 0 就不变，
+     然后不断的升序或者降序，最终得到一个乱序的数组。
+     但实际上不是绝对随机，因为 sort 是插入排序，已经确定了的位置不会再动，所以不彻底。
+    */
     function ranFun(params) {
       params.sort(function () {
         return Math.random() - 0.5
       })
     }
+    /*
+      洗牌算法，每打乱一个元素，在剩余元素中，随机选一个切换
+    */
+    function shuffle(arr) {
+      let j
+      for (let i = 0; i < arr.length; i++) {
+        j = Math.ceil(Math.random() * i);
+        // 注意，末尾要加';'，因为[]和()之间如果不添加';'，js 会当作执行语句。
+        // floor 是向下取整，找小于等于且最接近自己的整数。向上取整也是一样的。
+        [arr[i], arr[j]] = [arr[j], arr[i]]
+      }
+
+      console.log(arr)
+      return arr
+    }
 
     for (let i = 1; i <= 100; i++) {
       arr.push(i)
     }
-    ranFun(arr)
+    // ranFun(arr)
+    shuffle(arr)
     shuzi = arr.toString()
     console.log('arr', shuzi)
 
