@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>随机排序</title>
+</head>
+<body>
+  <div >
+    <h4>随机排序：</h4>
+    <p id="app" style="width: 260px; word-wrap: break-word;"></p>
+  </div>
+
+  <script>
+    let shuzi, arr = []
+    function ranFun(params) {
+      params.sort(function () {
+        return Math.random() - 0.5
+      })
+    }
+
+    for (let i = 1; i <= 100; i++) {
+      arr.push(i)
+    }
+    ranFun(arr)
+    shuzi = arr.toString()
+    console.log('arr', shuzi)
+
+    document.getElementById('app').innerHTML = shuzi
+  </script>
+</body>
+</html>
