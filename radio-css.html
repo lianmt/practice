@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css 开关灯</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    .content {
+      width: 100vw;
+      height: 100vh;
+      color: #333;
+      background-color: #fff;
+      transition: background-color 2s, color 2s;
+    }
+    #qiehuan {
+      display: none;
+    }
+    #qiehuan:checked + .content {
+      color: #fff;
+      background-color: #000;
+    }
+    #qiehuan:checked + .content .label-text::after {
+      content: '开灯';
+    }
+    .label-text::after {
+      content: '关灯';
+    }
+  </style>
+</head>
+<body>
+  <input type="checkbox" name="qiehuan" id="qiehuan">
+  <div class="content">
+    <button>
+      <label class="label-text" for="qiehuan"></label>
+    </button>
+  </div>
+</body>
+</html>
