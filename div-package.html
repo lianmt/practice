@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>红包生成器</title>
+</head>
+<body>
+
+  <script>
+    /**
+     * 不能完全随机，每个人至少分到一分钱。
+     * 钱要分完，如果一个人分得太多，剩下的人够不够分
+     * 要有最小值
+     */
+    // 切西瓜法，先随机拆，接着，每次拆最大的那部分，就不会出现不够分的情况了。
+    function genarate(amount, count) {
+      let ret = [amount];
+      while (count > 1) {
+        let cake = Math.max(...ret),
+            idx = ret.indexOf(cake),
+            part = 1 + Math.floor((cake / 2) * Math.random()),
+            rest = cake - part;
+        ret.splice(idx, 1, part, rest);
+
+        count--;
+      }
+      return ret;
+    }
+
+    /**
+     * 但是，太均匀，就不够刺激。
+     * 抽牌法，就是用洗牌法做，差距会更大，就有运气成分。
+     */
+  </script>
+</body>
+</html>
