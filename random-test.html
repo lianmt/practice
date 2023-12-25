@@ -22,13 +22,16 @@
 
 
     // 洗牌算法
-    function shuffle(arr) {
+    // 洗一张牌，或者三张牌，就不用把所有牌都洗一遍，当数量多的时候，性能会更好一点
+    function * shuffle(arr) {
       let j
       for (let i = 0; i < arr.length; i++) {
         j = Math.floor(Math.random() * i);
         // 注意，末尾要加';'，因为[]和()之间如果不添加';'，js 会当作执行语句。
         // floor 是向下取整，找小于等于且最接近自己的整数。为什么向下取整，因为向上取整，第一位永远不会变。
         [arr[i], arr[j]] = [arr[j], arr[i]]
+        // 洗牌性能优化，只取 3 张牌
+        yield arr[j]
       }
 
       // console.log(arr)
@@ -36,8 +39,15 @@
     }
 
     // 测试是否随机
+    // const result2 = Array(10).fill(0)
+    // for (let i = 0; i < 10000000; i++) {
+    //   const c = xipai(arr)
+    //   for (let j = 0; j < 10; j++) {
+    //     result2[j] += c[j]
+    //   }
+    // }
+
     // const result = Array(10).fill(0)
-    const result2 = Array(10).fill(0)
     // for (let i = 0; i < 10000000; i++) {
     //   const c = shuffle(arr)
     //   for (let j = 0; j < 10; j++) {
@@ -45,14 +55,11 @@
     //   }
     // }
 
-    for (let i = 0; i < 10000000; i++) {
-      const c = xipai(arr)
-      for (let j = 0; j < 10; j++) {
-        result2[j] += c[j]
-      }
-    }
-    // console.table('shuffle', result)
-    console.table(result2)
+    console.table('shuffle',
+      shuffle(arr).next().value,
+      shuffle(arr).next().value
+    )
+    // console.table(result2)
   </script>
 </body>
 </html>
